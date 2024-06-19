@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>Amazing Events</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./assets/amazing_brand.png" alt="Amazing Events" width="110" height="30" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./pages/upcomingEvents.html">Upcoming
+                                Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./pages/pastEvents.html">Past
+                                Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./pages/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./pages/stats.html">Stats</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="app" class="mb-3">
+        <section class="banner">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <img src="./assets/optional_banner_1.jpg" class="d-block w-100" alt="Home">
+                        <div
+                            class="carousel-caption d-flex h-100 flex-column justify-content-center align-items-center">
+                            <h2>Amazing Events</h2>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="./assets/optional_banner_2.jpg" class="d-block w-100" alt="Upcoming Events">
+                        <div
+                            class="carousel-caption d-flex h-100 flex-column justify-content-center align-items-center carousel-2">
+                            <h2>Upcoming Events</h2>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="./assets/optional_banner_3.jpg" class="d-block w-100" alt="Past Events">
+                        <div
+                            class="carousel-caption d-flex h-100 flex-column justify-content-center align-items-center">
+                            <h2>Past Events</h2>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="./assets/optional_banner_4.jpg" class="d-block w-100" alt="Contact">
+                        <div
+                            class="carousel-caption d-flex h-100 flex-column justify-content-center align-items-center">
+                            <h2>Contact</h2>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="./assets/optional_banner_5.jpg" class="d-block w-100" alt="Stats">
+                        <div
+                            class="carousel-caption d-flex h-100 flex-column justify-content-center align-items-center">
+                            <h2>Stats</h2>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <section class="inputs mt-3 mx-2">
+            {{ filteredEvents }}
+            <div class="input-group mb-3 d-flex justify-content-between align-items-center">
+                <div class="checkBox d-flex flex-wrap">
+                    <div v-for="category in categories" :key="category" class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" :id="category" :value="category"
+                            v-model="selectedCategories">
+                        <label class="form-check-label" :for="category">{{ category }}</label>
+                    </div>
+                </div>
+                <form class="d-flex" role="search" @submit.prevent>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchText" />
+                    <button v-on:click="handleSearch" class="btn btn-outline-success" type="submit">🔍</button>
+                </form>
+            </div>
+        </section>
+        <section id="cardsPlace" class="cards d-flex flex-wrap justify-content-center mx-3">
+            <div v-if="events.length == 0">
+                <h1 class='text-center text-dark'>"No events related to your search."</h1>
+            </div>
+            <div v-for="event in events" :key="event.id" class="my-1">
+                <div class="card h-100 cards-i" style="width: 18rem">
+                    <img :src="event.image" class="card-img-top h-50 object-fit-cover" :alt="event.name">
+                    <div class="card-body text-center d-flex flex-column h-50">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">{{ event.description }}</p>
+                        <div class="d-flex justify-content-around align-items-baseline">
+                            <p>USD {{ event.price }} USD</p>
+                            <a :href="'./pages/details.html?id='+event._id" class="btn go-details">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="d-flex justify-content-between align-items-center px-2">
+        <div class="d-flex">
+            <a href="https://www.facebook.com/andresgoyes" target="_blank" class="me-3">
+                <img src="./assets/fb_logo.png" alt="Facebook" class="img-fluid" width="40" height="40">
+            </a>
+            <a href="https://wa.me/3006445026" target="_blank" class="me-3">
+                <img src="./assets/wa_logo.png" alt="WhatsApp" class="img-fluid" width="40" height="40">
+            </a>
+            <a href="https://www.instagram.com/andresgoyes" target="_blank">
+                <img src="./assets/ig_logo.png" alt="Instagram" class="img-fluid" width="40" height="40">
+            </a>
+        </div>
+        <p class="pt-3 fs-6">Cohort 3 - Andres Goyes</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./modules/main.js" type="module"></script>
+</body>
+
+</html>
